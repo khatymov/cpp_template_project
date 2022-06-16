@@ -6,7 +6,10 @@
 
 int main(int argc, char** argv)
 {
-    MyClass my_class();
+    char* str = "Hello world!";
+    MyClass my_class(str);
+
+    my_class.print();
 
     return 0;
 }
