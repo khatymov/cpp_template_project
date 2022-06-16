@@ -35,9 +35,6 @@ public:
     //! \brief destructor.
     virtual ~MyClass();
 
-    //! \brief print data
-    virtual void print() const;
-
     //! \brief get data
     virtual std::string get() const;
 

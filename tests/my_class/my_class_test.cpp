@@ -11,13 +11,13 @@ TEST(my_class_test, check_methods)
 {
     MockMyClass my_class;
     MyClassRunner my_class_runner;
-    EXPECT_CALL(my_class, print()).Times(Exactly(1));
+
     EXPECT_CALL(my_class, get()).Times(Exactly(1));
 
     my_class_runner.call_methods(my_class);
 }
 
-TEST(test_constructors, test_my_class)
+TEST(test_class_components, test_my_class)
 {
     char* str = "Hello world!";
     MyClass my_class_0(str);
@@ -30,5 +30,13 @@ TEST(test_constructors, test_my_class)
     MyClass my_class_2(std::move(my_class_0));
     EXPECT_TRUE(my_class_2.get().compare(string(str)) == 0);
     EXPECT_TRUE(my_class_0.is_data_null());
+
+    string s("test");
+    MyClass tmp(s.c_str());
+    MyClass my_class_3(tmp);
+    EXPECT_TRUE(my_class_3.get().compare(string(s)) == 0);
+
+    my_class_2 = my_class_3;
+    EXPECT_TRUE(my_class_2.get().compare(my_class_3.get()) == 0);
 }
 

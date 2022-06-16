@@ -49,11 +49,6 @@ bool MyClass::is_data_null() const
     return _data == nullptr;
 }
 
-void MyClass::print() const
-{
-    cout << _data << endl;
-}
-
 std::string MyClass::get() const
 {
     return string(_data);

@@ -2,14 +2,15 @@
  * \brief Entry point.
  */
 
+#include <iostream>
+
 #include "my_class.h"
 
-int main(int argc, char** argv)
+int main()
 {
-    char* str = "Hello world!";
-    MyClass my_class(str);
+    MyClass my_class("Hello world!");
 
-    my_class.print();
+    std::cout << my_class.get() << std::endl;
 
     return 0;
 }
