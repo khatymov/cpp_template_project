@@ -18,16 +18,21 @@ You have to write a lot of code, but you don't want to waste your time creating 
 ---
 
 ## Requirements
-* C++ version: `C++11`
+* C++ version: [`C++17`](https://en.cppreference.com/w/cpp/17)
 * Build system: [`CMake`](https://cmake.org/)
 * C++ compiler: `g++`
 * Code coverage report: [`lcov`](http://ltp.sourceforge.net/coverage/lcov.php)
-* Test framework: `gtest`
+* Test framework: [`gtest`](https://github.com/google/googletest)
 
 ---
 
 ## Guide
 
+0. To create your own class use script: 
+- `./scripts/class.sh ClassName ./path` 
+<br> then don't forget to add to CMakelists, e.g.: 
+- `include(${CMAKE_CURRENT_LIST_DIR}/class_name/class_name.cmake)`
+- `add_executable(... ${CLASS_NAME} ...)`
 1. To build project run script: `./scripts/build.sh`
 2. To run tests use script: `./scripts/test.sh`
 3. To find out a code coverage you need to do the second step. Open html file to see details: `build_tests/out/index.html`
