@@ -41,8 +41,9 @@ You have to write a lot of code, but you don't want to waste your time creating 
 * Install dependencies: `./scripts/install_dep.sh`
 * Build project: `./scripts/build.sh`
 * Run unit tests: `./scripts/test.sh`
----
 
+- To create your own class use script: ./scripts/class.sh ClassName ./path
+---
 ## Developers
 
 - [Renat](https://github.com/khatymov)
