@@ -10,3 +10,5 @@ add_executable(${PROJECT_NAME}
                 ${MY_CLASS})
 
 target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra)
+
+add_subdirectory(tests)
