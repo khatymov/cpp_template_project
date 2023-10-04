@@ -1,21 +1,9 @@
 #include "gtest/gtest.h"
-#include "gmock/gmock.h"
 
-#include "mock_my_class.h"
+#include "my_class_test.h"
 
 using namespace std;
 using namespace testing;
-
-
-TEST(my_class_test, check_methods)
-{
-    MockMyClass my_class;
-    MyClassRunner my_class_runner;
-
-    EXPECT_CALL(my_class, get()).Times(Exactly(1));
-
-    my_class_runner.call_methods(my_class);
-}
 
 TEST(test_class_components, test_my_class)
 {

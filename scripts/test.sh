@@ -1,21 +1,37 @@
 #!/bin/bash
 
-set -euo pipefail
+# Get the directory where the script is located
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [ -d build_tests ]; then
-  rm -rf ./build_tests
+# Change to the project root directory
+cd "${script_dir}/.."
+
+if [ -f "CMakeUserPresets.json" ]; then
+  rm "CMakeUserPresets.json" || exit $?
 fi
 
-mkdir ./build_tests
-cd ./build_tests
-cmake ../tests/
-make
-./run_unit_tests
+build_dir="build"
 
-lcov --directory . --capture --output-file coverage.info
-lcov --remove coverage.info '/opt/*' '/usr/*' '*/tests/*' 'build/*' --output-file coverage.info
-lcov --list coverage.info
+if [ -d "${build_dir}" ]; then
+  rm -rf "${build_dir}" || exit $?
+fi
 
-genhtml coverage.info --output-directory out
+# Install dependencies
+conan install . --output-folder="${build_dir}" --build=missing || exit $?
 
-#google-chrome-stable out/index.html
+cd "${build_dir}" || exit $?
+
+# Build
+cmake ../tests/ -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release || exit $?
+cmake --build . --config Release || exit $?
+
+# Run all unit tests
+./run_unit_tests || exit $?
+
+# Get coverage and html report
+lcov --directory . --capture --output-file coverage.info || exit $?
+lcov --remove coverage.info '/opt/*' '/usr/*' '*/tests/*' 'build/*' --output-file coverage.info || exit $?
+lcov --list coverage.info || exit $?
+genhtml coverage.info --output-directory out || exit $?
+
+# google-chrome-stable out/index.html

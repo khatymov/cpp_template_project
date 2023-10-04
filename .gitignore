@@ -614,3 +614,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Conan
+CMakeUserPresets.json
