@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-#include "my_class.h"
 #include "move.h"
+#include "my_class.h"
 
 int main()
 {
