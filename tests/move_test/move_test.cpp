@@ -25,9 +25,14 @@ TEST(test_move_semantics, test_methods)
 
     Move move4;
     move4 = move0 + move3;
-    move4.print();
     EXPECT_EQ(move0.get_str(), str0);
     EXPECT_STREQ(move0.get_str_prt(), str_prt0);
     EXPECT_EQ(move3.get_str(), str1);
     EXPECT_STREQ(move3.get_str_prt(), str_prt1);
+
+    const char* str_prt5 = "Move5Ptr";
+    string str5("Move5Str");
+    Move move5(str_prt5, str5);
+    move5 = move4;
+    EXPECT_EQ(move5.get_str(), str0 + str1);
 }

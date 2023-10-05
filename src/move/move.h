@@ -37,7 +37,7 @@ public:
     Move& operator=(Move&& other);
 
     //! \brief default destructor.
-    ~Move() = default;
+    ~Move();
 
     void print();
 
@@ -46,6 +46,6 @@ public:
     const char*  get_str_prt();
 
 private:
-    char* _str_prt;
+    char* _str_ptr;
     std::string _str;
 };

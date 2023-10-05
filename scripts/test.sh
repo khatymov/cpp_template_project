@@ -35,3 +35,6 @@ lcov --list coverage.info || exit $?
 genhtml coverage.info --output-directory out || exit $?
 
 # google-chrome-stable out/index.html
+
+# Check for memory leaks
+valgrind --leak-check=full ./run_unit_tests
