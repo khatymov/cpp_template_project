@@ -15,8 +15,8 @@ TEST(test_move_semantics, test_methods)
 
     const char* str_prt1 = "Move1Ptr";
     string str1("Move1Str");
-    Move move1(Move(str_prt1, str1));
-    Move move2(std::move(move1));
+    auto move1(Move(str_prt1, str1));
+    auto move2(std::move(move1));
 
     Move move3("Move3Ptr", "Move3Str");
     move3 = std::move(move2);

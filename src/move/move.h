@@ -34,16 +34,16 @@ public:
     Move(Move&& other) noexcept;
 
     //! \brief move assigment operator.
-    Move& operator=(Move&& other);
+    Move& operator=(Move&& other) noexcept;
 
     //! \brief default destructor.
     ~Move();
 
     void print();
 
-    std::string get_str();
+    std::string get_str() const;
 
-    const char*  get_str_prt();
+    const char*  get_str_prt() const;
 
 private:
     char* _str_ptr;

@@ -45,7 +45,7 @@ Move::Move(Move&& other) noexcept : _str_ptr(std::exchange(other._str_ptr, nullp
     cout << "Move::Move(Move&& other)" << endl;
 }
 
-Move& Move::operator=(Move&& other)
+Move& Move::operator=(Move&& other) noexcept
 {
     cout << "Move& Move::operator=(Move&& other)" << endl;
     std::swap(_str_ptr, other._str_ptr);
@@ -70,12 +70,12 @@ Move Move::operator+(const Move& other)
     return res;
 }
 
-std::string Move::get_str()
+std::string Move::get_str() const
 {
     return this->_str;
 }
 
-const char* Move::get_str_prt()
+const char* Move::get_str_prt() const
 {
     return this->_str_ptr;
 }
