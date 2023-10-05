@@ -9,8 +9,7 @@
 
 using namespace std;
 
-MyClass::MyClass(const char* data)
-        :_data(nullptr)
+MyClass::MyClass(const char* data) : _data(nullptr)
 {
     if (data)
     {
@@ -22,23 +21,23 @@ MyClass::MyClass(const char* data)
 
 MyClass::~MyClass()
 {
-    delete [] _data;
+    delete[] _data;
 };
 
-MyClass::MyClass(const MyClass &other)
-    : MyClass(other._data)
-{}
+MyClass::MyClass(const MyClass& other) : MyClass(other._data)
+{
+}
 
-MyClass::MyClass(MyClass &&other) noexcept
-    :_data(std::exchange(other._data, nullptr))
-{}
+MyClass::MyClass(MyClass&& other) noexcept : _data(std::exchange(other._data, nullptr))
+{
+}
 
-MyClass& MyClass::operator=(const MyClass &other)
+MyClass& MyClass::operator=(const MyClass& other)
 {
     return *this = MyClass(other._data);
 }
 
-MyClass& MyClass::operator=(MyClass &&other) noexcept
+MyClass& MyClass::operator=(MyClass&& other) noexcept
 {
     std::swap(_data, other._data);
     return *this;

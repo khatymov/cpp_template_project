@@ -11,15 +11,20 @@ find_package(GTest REQUIRED)
 include(${CMAKE_CURRENT_LIST_DIR}/../my_class/my_class.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/my_class/my_class_test.cmake)
 
+include(${CMAKE_CURRENT_LIST_DIR}/../src/move/move.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/move_test/move_test.cmake)
+
 add_executable(
         ${PROJECT_NAME}
-        ${MY_CLASS}
         test.cpp
+        ${MY_CLASS}
+        ${MOVE}
         ${MY_CLASS_TEST}
+        ${MOVE_TEST}
 )
 target_link_libraries(
         ${PROJECT_NAME}
-        gtest::gtest
+        gtest
 )
 
 enable_testing()

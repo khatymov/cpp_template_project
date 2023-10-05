@@ -27,4 +27,3 @@ TEST(test_class_components, test_my_class)
     my_class_2 = my_class_3;
     EXPECT_TRUE(my_class_2.get().compare(my_class_3.get()) == 0);
 }
-
