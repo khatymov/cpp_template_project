@@ -19,7 +19,7 @@ class Move
 public:
 
     //! \brief constructor.
-    explicit Move(const char* str_prt = "", const std::string& str = std::string());
+    explicit Move(const char* str_prt = "Hi ptr", const std::string& str = std::string("Hi mark"));
 
     //! \brief copy constructor.
     Move(const Move& other);
@@ -27,14 +27,23 @@ public:
     //! \brief assigment operator.
     Move& operator=(const Move& other);
 
+    //! \brief plus operator.
+    Move operator+(const Move& other);
+
     //! \brief move constructor.
-    Move(Move&& other);
+    Move(Move&& other) noexcept;
 
     //! \brief move assigment operator.
     Move& operator=(Move&& other);
 
     //! \brief default destructor.
     ~Move() = default;
+
+    void print();
+
+    std::string get_str();
+
+    const char*  get_str_prt();
 
 private:
     char* _str_prt;
