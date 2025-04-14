@@ -1,12 +1,11 @@
-#include "gtest/gtest.h"
-
 #include "move_test.h"
+
+#include "gtest/gtest.h"
 
 using namespace std;
 using namespace testing;
 
-TEST(test_move_semantics, test_methods)
-{
+TEST(test_move_semantics, test_methods) {
     const char* str_prt0 = "Move0ptr";
     string str0("Move0string");
     Move move0(str_prt0, str0);
