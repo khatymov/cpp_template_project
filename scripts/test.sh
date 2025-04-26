@@ -17,12 +17,15 @@ if [ -d "${build_dir}" ]; then
 fi
 
 # Install dependencies
-conan install . --output-folder="${build_dir}" --build=missing || exit $?
+cmake_build_type="Release"
+
+# Install dependencies
+conan install . --output-folder="${build_dir}" --build=missing -s build_type=${cmake_build_type} || exit $?
 
 cd "${build_dir}" || exit $?
 
 # Build
-cmake ../tests/ -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release || exit $?
+cmake .. -G "Ninja"  -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=${cmake_build_type} || exit $?
 cmake --build . --config Release || exit $?
 
 # Run all unit tests
